@@ -1,29 +1,31 @@
 <script>
-	export let name;
 
 	import TicketForm from './private/TiketForm.svelte'
+	import MyLastTickets from './private/MyLastTickets.svelte';
 	import NavBar from './partials/NavBar.svelte';
+
 </script>
 
-<body>
-
-	<header>
-		<NavBar />
-	</header>
-
-	<div class="container">  
-	<main>
-		<section class="columns">
-			<div class="column is-three-fifths"><TicketForm /></div>
-		</section>
-		<br>
-		<h1>Hello {name}!</h1>
-		<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	</main>
-  
-	<footer>
-	  <p>© 2063 Dinos-R-Us</p>
-	</footer>
-
-	</div>
-</body>
+<style>
+  @import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+  * {
+    font-family: "Nunito", sans-serif;
+  }
+</style>
+<section>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <div class="card p-2 shadow">
+          <div class="card-body">
+            <h5 class="card-title mb-4">Abrir novo ticket</h5>
+				<TicketForm />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+		<MyLastTickets />
+      </div>
+    </div>
+  </div>
+</section>
