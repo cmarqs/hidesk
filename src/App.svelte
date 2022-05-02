@@ -16,7 +16,7 @@
   };
 
   const saveTicket = ({ title, content }) => {
-    let tkt = { id: 3, title, content, history: [{ id: 6, updatedAt: Date.now(), userId: 2, statusId: 1, comment: "Ticket opened" }] };
+    let tkt = { id: null, title, content, history: [{ id: null, updatedAt: Date.now(), userId: 2, statusId: 1, comment: "Ticket opened" }] };
     allTickets = [tkt, ...allTickets];
   };
 

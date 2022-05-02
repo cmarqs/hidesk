@@ -8,6 +8,10 @@
   function handleSubmit() {
     saveTicket(formData);
 
+    cancel();
+  }
+
+  function cancel(){
     formData = { title: "", content: "", id: null };
   }
 
@@ -23,4 +27,5 @@
     <textarea class="form-control" id="content" rows="3" placeholder="Descreva os detalhes" bind:value={formData.content} />
   </div>
   <button type="submit" class="btn btn-primary" disabled={isEmpty}>Submeter ticket</button>
+  <button type="submit" class="btn btn-secondary" disabled={isEmpty} on:click={cancel} >Cancelar</button>
 </form>
