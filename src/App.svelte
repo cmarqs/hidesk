@@ -10,16 +10,18 @@
   let ticketData = $openedTickets;
 
   //functions
-  let deleteTicket = (id) => {
-    console.log(`Delete ticket ${id}`);
-
+  const deleteTicket = (id) => {
     allTickets = allTickets.filter((tkt) => tkt.id !== id);
   };
 
-  let editTicket = (id) => {
-    console.log(`Edit ticket ${id}`);
+  const addTicket = ({ title, content }) => {
+    let tkt = { id: 3, title, content, history: [{ id: 6, updatedAt: Date.now(), userId: 2, statusId: 1, comment: "Ticket opened" }] };
+    allTickets = [tkt, ...allTickets];
+  };
 
-  }
+  const editTicket = (id) => {
+    console.log(`Edit ticket ${id}`);
+  };
 </script>
 
 <section>
@@ -29,7 +31,7 @@
         <div class="card p-2 shadow">
           <div class="card-body">
             <h5 class="card-title mb-4">Abrir novo ticket</h5>
-            <TicketForm />
+            <TicketForm {addTicket} />
           </div>
         </div>
       </div>

@@ -4,8 +4,6 @@ export default
             id: 1,
             title: "Meu primeiro ticket",
             content: "Este é um exemplo de ticket aberto",
-            dateOpened: "30/05/2022 10:23",
-            userId: 2,
             history: [
                 {
                     id: 1,
@@ -34,8 +32,6 @@ export default
             id: 2,
             title: "Feito em Svelte",
             content: "Ticket criado no sistema de chamados HiDesk em Svelte",
-            dateOpened: "30/05/2022 10:23",
-            userId: 2,
             history: [
                 {
                     id: 3,

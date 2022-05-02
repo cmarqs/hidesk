@@ -1,10 +1,12 @@
 <script>
+    //properties
     export let ticketData = [];
 
     //method props
     export let deleteTicket;
     export let editTicket;
 
+    //variables
 </script>
 
 {#if ticketData.length > 0}
