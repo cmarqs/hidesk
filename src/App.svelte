@@ -15,13 +15,22 @@
     allTickets = allTickets.filter((tkt) => tkt.id !== id);
   };
 
-  const saveTicket = ({ title, content }) => {
-    let tkt = { id: null, title, content, history: [{ id: null, updatedAt: Date.now(), userId: 2, statusId: 1, comment: "Ticket opened" }] };
-    allTickets = [tkt, ...allTickets];
+  const saveTicket = (data) => {
+    let { id, title, content } = data;
+    let tkt;
+    if (!!id) {
+      tkt = { id: data.id, title, content, history: [{ id: null, updatedAt: Date.now(), userId: 2, statusId: 1, comment: "Ticket opened" }] };
+      allTickets = allTickets.map((tkt) => {
+        return tkt.id === formData.id ? { ...tkt, title, content } : { ...tkt };
+      });
+    } else {
+      tkt = { id: data.id, title, content, history: [{ id: null, updatedAt: Date.now(), userId: 2, statusId: 1, comment: "Ticket opened" }] };
+      allTickets = [tkt, ...allTickets];
+    }
   };
 
   const setModifiedTicket = (id) => {
-    formData = allTickets.find(tkt => tkt.id === id);
+    formData = allTickets.find((tkt) => tkt.id === id);
   };
 </script>
 

@@ -4,6 +4,7 @@
   export let formData = { title: "", content: "", id: null };
 
   $: isEmpty = !formData.title || !formData.content;
+  $: isEditing = !!formData.id;
 
   function handleSubmit() {
     saveTicket(formData);
