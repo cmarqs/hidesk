@@ -20,12 +20,8 @@
     allTickets = [tkt, ...allTickets];
   };
 
-  const editTicket = (id) => {
-    console.log(`Edit ticket ${id}`);
-
-    let data = allTickets.find(tkt => tkt.id === id);
-
-    formData = {data};
+  const setModifiedTicket = (id) => {
+    formData = allTickets.find(tkt => tkt.id === id);
   };
 </script>
 
@@ -36,12 +32,12 @@
         <div class="card p-2 shadow">
           <div class="card-body">
             <h5 class="card-title mb-4">Abrir novo ticket</h5>
-            <TicketForm {saveTicket} formData={formData} />
+            <TicketForm {saveTicket} {formData} />
           </div>
         </div>
       </div>
       <div class="col-md-6">
-        <MyLastTickets ticketData={allTickets} {deleteTicket} {editTicket} />
+        <MyLastTickets ticketData={allTickets} {deleteTicket} editTicket={setModifiedTicket} />
       </div>
     </div>
   </div>

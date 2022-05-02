@@ -11,52 +11,6 @@
     formData = { title: "", content: "", id: null };
   }
 
-  let notes = [];
-
-  //#region methods
-
-  let saveTicket = () => {
-    const newTicket = {
-      id: notes.length + 1,
-      title: formData.title,
-      content: formData.content,
-    };
-    notes = notes.concat(newTicket);
-
-    formData = {
-      id: null,
-      title: "",
-      content: "",
-    };
-    console.log(notes);
-  };
-
-  let isEdit = false;
-  let editTicket = (note) => {
-    isEdit = true;
-    formData = note;
-  };
-
-  let updateTicket = () => {
-    isEdit = !isEdit;
-    let noteDB = {
-      title: formData.title,
-      category: formData.category,
-      content: formData.content,
-      id: formData.id,
-    };
-    let objIndex = notes.findIndex((obj) => obj.id == noteDB.id);
-    console.log("Before update: ", notes[objIndex]);
-    notes[objIndex] = noteDB;
-    formData = {
-      id: null,
-      title: "",
-      category: "",
-      content: "",
-    };
-  };
-
-  //#endregion
 </script>
 
 <form on:submit|preventDefault={handleSubmit}>
