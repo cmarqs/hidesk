@@ -8,19 +8,24 @@
   //variables
   let allTickets = $ticketStore;
   let ticketData = $openedTickets;
+  let formData = {};
 
   //functions
   const deleteTicket = (id) => {
     allTickets = allTickets.filter((tkt) => tkt.id !== id);
   };
 
-  const addTicket = ({ title, content }) => {
+  const saveTicket = ({ title, content }) => {
     let tkt = { id: 3, title, content, history: [{ id: 6, updatedAt: Date.now(), userId: 2, statusId: 1, comment: "Ticket opened" }] };
     allTickets = [tkt, ...allTickets];
   };
 
   const editTicket = (id) => {
     console.log(`Edit ticket ${id}`);
+
+    let data = allTickets.find(tkt => tkt.id === id);
+
+    formData = {data};
   };
 </script>
 
@@ -31,7 +36,7 @@
         <div class="card p-2 shadow">
           <div class="card-body">
             <h5 class="card-title mb-4">Abrir novo ticket</h5>
-            <TicketForm {addTicket} />
+            <TicketForm {saveTicket} formData={formData} />
           </div>
         </div>
       </div>

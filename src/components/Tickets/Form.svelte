@@ -1,17 +1,15 @@
 <script>
+  export let saveTicket;
 
-  export let addTicket;
-  
-  let formData = {title: "", content: "", id: null};
-  
+  export let formData = { title: "", content: "", id: null };
+
   $: isEmpty = !formData.title || !formData.content;
 
   function handleSubmit() {
-    addTicket(formData);
-    formData = {title: "", content: "", id: null};
+    saveTicket(formData);
+
+    formData = { title: "", content: "", id: null };
   }
-
-
 
   let notes = [];
 
@@ -70,5 +68,5 @@
     <label for="content">Descrição</label>
     <textarea class="form-control" id="content" rows="3" placeholder="Descreva os detalhes" bind:value={formData.content} />
   </div>
-  <button type="submit" class="btn btn-primary" disabled={isEmpty} >Submeter ticket</button>
+  <button type="submit" class="btn btn-primary" disabled={isEmpty}>Submeter ticket</button>
 </form>
