@@ -12,10 +12,9 @@ function flattenObjects (data) {
         let lastUpdate = ticket.history[ticket.history.length - 1].updatedAt;
         let lastOperatorUpdated = ticket.history[ticket.history.length - 1].userId;
 
-        return { ...ticket, currentStatus,lastUpdate, lastOperatorUpdated };
-    })
-
-}
+        return { ...ticket, currentStatus, lastUpdate, lastOperatorUpdated };
+    });
+};
 
 export const openedTickets = derived(store, $opened => {
     return $opened.filter(t => t.currentStatus === 1);
