@@ -11,8 +11,7 @@
 
 {#if ticketData.length > 0}
     <div class="table-responsive">
-        <table class="table">
-            <caption>Lista de tickets</caption>
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">Status</th>
@@ -28,8 +27,8 @@
                         <td>{ticket.currentStatus}</td>
                         <td>{ticket.lastUpdate}</td>
                         <td>{ticket.title}</td>
-                        <td>{ticket.content}</td>
-                        <th scope="row">
+                        <td class="text-left">{ticket.content}</td>
+                        <th scope="row flex-nowrap">
                             <button class="btn btn-info" on:click={editTicket(ticket.id)}>Edit</button>
                             <button class="btn btn-danger" on:click={deleteTicket(ticket.id)}>Delete</button>
                         </th>

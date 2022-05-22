@@ -55,7 +55,19 @@
     
     <div class="row mt-5">
       <div class="col-lg-12">
-        <MyLastTickets ticketData={cardData} {deleteTicket} editTicket={setModifiedTicket} />
+        <div class="card text-center">
+          <div class="card-header">
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item">
+                <a class="nav-link active" href="">Abertos</a>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <MyLastTickets ticketData={cardData} {deleteTicket} editTicket={setModifiedTicket} />
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
