@@ -1,39 +1,43 @@
 <script>
-  import ticketStore, { openedTickets } from "./data/stores/Tickets";
+  import cardStore, { openedCards } from "./data/stores/Cards";
 
   //components
   import TicketForm from "./components/Tickets/Form.svelte";
   import MyLastTickets from "./components/Tickets/List.svelte";
+  import NavBar from "./components/NavBar.svelte";
 
   //variables
-  let allTickets = $ticketStore;
-  let ticketData = $openedTickets;
+  let cardData = $openedCards;
   let formData = {};
 
   //functions
+
   const deleteTicket = (id) => {
-    allTickets = allTickets.filter((tkt) => tkt.id !== id);
+    cardData = cardData.filter((tkt) => tkt.id !== id);
   };
 
   const saveTicket = (data) => {
     let { id, title, content } = data;
     let tkt;
     if (!!id) {
+      //edit card
       tkt = { id: data.id, title, content, history: [{ id: null, updatedAt: Date.now(), userId: 2, statusId: 1, comment: "Ticket opened" }] };
-      allTickets = allTickets.map((tkt) => {
+      cardData = cardData.map((tkt) => {
         return tkt.id === formData.id ? { ...tkt, title, content } : { ...tkt };
       });
     } else {
+      //new card
       tkt = { id: data.id, title, content, history: [{ id: null, updatedAt: Date.now(), userId: 2, statusId: 1, comment: "Ticket opened" }] };
-      allTickets = [tkt, ...allTickets];
+      cardData = [tkt, ...cardData];
     }
   };
 
   const setModifiedTicket = (id) => {
-    formData = allTickets.find((tkt) => tkt.id === id);
+    formData = cardData.find((tkt) => tkt.id === id);
   };
 </script>
 
+<NavBar />
 <section>
   <div class="container">
     <div class="row mt-5">
@@ -46,7 +50,12 @@
         </div>
       </div>
       <div class="col-md-6">
-        <MyLastTickets ticketData={allTickets} {deleteTicket} editTicket={setModifiedTicket} />
+      </div>      
+    </div>
+    
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <MyLastTickets ticketData={cardData} {deleteTicket} editTicket={setModifiedTicket} />
       </div>
     </div>
   </div>
